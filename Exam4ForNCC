@@ -1,0 +1,29 @@
+#include "stdio.h"
+#include "stdlib.h"
+int main(){
+    FILE *fptr;
+    if((fptr= fopen("dataStore.txt","w"))==NULL){
+        puts("File cannot open!");
+        int Code;
+        exit(Code=1);
+    }
+    else{
+        puts("Enter the id , userName , password , amount ");
+        printf(">:");
+
+        unsigned  int id;
+        char userName[20];
+        int password ;
+        double amount;
+
+        scanf("%d%d20s%lf",&id,userName,&password,&amount);
+        while (!feof(stdin)){
+            fprintf(fptr,"%d%d%20s%lf",&id,userName,&password,&amount);
+            printf(">:");
+            scanf("%d%d%20s%lf",&id,userName,&password,&amount);
+
+        }
+        fclose(fptr);
+        return 0;
+    }
+}
